@@ -1,0 +1,28 @@
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --border: #d9d9dd;
+  --text-1: #1d1d22;
+  --text-2: #5a5b63;
+  --accent: #6f74ff;
+  --accent-soft: #ececff;
+  --success: #1e9c72;
+  --warning: #d86a34;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --bg: #121318;
+  --surface: #1c1d24;
+  --border: #353743;
+  --text-1: #f4f4f7;
+  --text-2: #aeb1bc;
+  --accent: #a4a8ff;
+  --accent-soft: #2a2d4f;
+  --success: #62d6ae;
+  --warning: #ffaf7f;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}

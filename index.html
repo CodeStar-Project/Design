@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Codestar - Palette</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles/tokens.css" />
+  <link rel="stylesheet" href="styles/base.css" />
+  <link rel="stylesheet" href="styles/layout.css" />
+  <link rel="stylesheet" href="styles/colors.css" />
+  <link rel="stylesheet" href="styles/buttons.css" />
+  <link rel="stylesheet" href="styles/typography.css" />
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <h1>Codestar Palette</h1>
+        <p class="sub">Light / dark mode, colors, buttons, typography</p>
+      </div>
+      <label class="toggle" for="themeSwitch">
+        Dark mode
+        <input id="themeSwitch" type="checkbox" />
+      </label>
+    </header>
+
+    <section>
+      <p class="section-title">Colors</p>
+      <div class="color-grid" id="colorGrid"></div>
+    </section>
+
+    <section>
+      <p class="section-title">Buttons</p>
+      <div class="buttons">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-soft">Soft</button>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-title">Typography</p>
+      <div class="type-list">
+        <article class="type-row">
+          <p class="meta">Display · Fraunces</p>
+          <p class="sample-display">Design direction</p>
+        </article>
+        <article class="type-row">
+          <p class="meta">Heading · DM Sans</p>
+          <p class="sample-heading">Project component title</p>
+        </article>
+        <article class="type-row">
+          <p class="meta">Body · DM Sans</p>
+          <p class="sample-body">This is body text for everyday interface content, descriptions, and helper messages.</p>
+        </article>
+        <article class="type-row">
+          <p class="meta">Mono · DM Mono</p>
+          <p class="sample-mono">--accent: #6f74ff;</p>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const themes = {
+      light: [
+        { name: "Background", hex: "#FFFFFF" },
+        { name: "Text", hex: "#1D1D22" },
+        { name: "Muted Text", hex: "#5A5B63" },
+        { name: "Border", hex: "#D9D9DD" },
+        { name: "Accent", hex: "#6F74FF" },
+        { name: "Success", hex: "#1E9C72" },
+        { name: "Warning", hex: "#D86A34" }
+      ],
+      dark: [
+        { name: "Background", hex: "#121318" },
+        { name: "Text", hex: "#F4F4F7" },
+        { name: "Muted Text", hex: "#AEB1BC" },
+        { name: "Border", hex: "#353743" },
+        { name: "Accent", hex: "#A4A8FF" },
+        { name: "Success", hex: "#62D6AE" },
+        { name: "Warning", hex: "#FFAF7F" }
+      ]
+    };
+
+    function renderColors(mode) {
+      const root = document.getElementById("colorGrid");
+      root.innerHTML = themes[mode]
+        .map((c) => `
+          <div class="swatch">
+            <div class="chip" style="background:${c.hex}"></div>
+            <div class="swatch-body">
+              <p class="swatch-name">${c.name}</p>
+              <p class="swatch-hex">${c.hex}</p>
+            </div>
+          </div>
+        `)
+        .join("");
+    }
+
+    const checkbox = document.getElementById("themeSwitch");
+    checkbox.addEventListener("change", () => {
+      const isDark = checkbox.checked;
+      document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
+      renderColors(isDark ? "dark" : "light");
+    });
+
+    renderColors("light");
+  </script>
+</body>
+</html>
