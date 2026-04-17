@@ -1,13 +1,8 @@
-.type-list {
-  display: grid;
-  gap: 10px;
-}
-
 .type-row {
-  border: 1px solid var(--border);
+  border: 1px solid var(--da-border);
   border-radius: 12px;
   padding: 14px;
-  background: var(--surface);
+  background: var(--da-surface);
 }
 
 .meta {
@@ -15,7 +10,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--text-2);
+  color: var(--da-text-2);
 }
 
 .sample-display {
@@ -23,21 +18,23 @@
   font-family: var(--font-display);
   font-weight: 300;
   font-size: 2rem;
+  color: var(--da-text-1);
 }
 
 .sample-heading {
   margin: 0;
   font-size: 1.3rem;
   font-weight: 500;
+  color: var(--da-text-1);
 }
 
 .sample-body {
   margin: 0;
-  color: var(--text-2);
+  color: var(--da-text-2);
 }
 
 .sample-mono {
   margin: 0;
   font-family: var(--font-mono);
-  color: var(--accent);
+  color: var(--da-accent);
 }

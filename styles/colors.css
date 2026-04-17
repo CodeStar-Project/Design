@@ -1,15 +1,35 @@
-.color-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 10px;
+:root {
+  --da-bg: #f28022;
+  --da-surface: #ffffff;
+  --da-border: #d9d9dd;
+  --da-text-1: #1d1d22;
+  --da-text-2: #5a5b63;
+  --da-accent: #6f74ff;
+  --da-accent-soft: #ececff;
+  --da-success: #1e9c72;
+  --da-warning: #d86a34;
+  --da-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] {
+  --da-bg: #f28022;
+  --da-surface: #1c1d24;
+  --da-border: #353743;
+  --da-text-1: #f4f4f7;
+  --da-text-2: #aeb1bc;
+  --da-accent: #a4a8ff;
+  --da-accent-soft: #2a2d4f;
+  --da-success: #62d6ae;
+  --da-warning: #ffaf7f;
+  --da-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .swatch {
-  border: 1px solid var(--border);
+  border: 1px solid var(--da-border);
   border-radius: 12px;
   overflow: hidden;
-  background: var(--surface);
-  box-shadow: var(--shadow);
+  background: var(--da-surface);
+  box-shadow: var(--da-shadow);
 }
 
 .chip {
@@ -30,5 +50,5 @@
   margin: 4px 0 0;
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: var(--text-2);
+  color: var(--da-text-2);
 }

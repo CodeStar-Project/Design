@@ -7,9 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500&family=DM+Sans:wght@400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles/tokens.css" />
   <link rel="stylesheet" href="styles/base.css" />
-  <link rel="stylesheet" href="styles/layout.css" />
   <link rel="stylesheet" href="styles/colors.css" />
   <link rel="stylesheet" href="styles/buttons.css" />
   <link rel="stylesheet" href="styles/typography.css" />
@@ -65,36 +63,30 @@
   </div>
 
   <script>
-    const themes = {
-      light: [
-        { name: "Background", hex: "#FFFFFF" },
-        { name: "Text", hex: "#1D1D22" },
-        { name: "Muted Text", hex: "#5A5B63" },
-        { name: "Border", hex: "#D9D9DD" },
-        { name: "Accent", hex: "#6F74FF" },
-        { name: "Success", hex: "#1E9C72" },
-        { name: "Warning", hex: "#D86A34" }
-      ],
-      dark: [
-        { name: "Background", hex: "#121318" },
-        { name: "Text", hex: "#F4F4F7" },
-        { name: "Muted Text", hex: "#AEB1BC" },
-        { name: "Border", hex: "#353743" },
-        { name: "Accent", hex: "#A4A8FF" },
-        { name: "Success", hex: "#62D6AE" },
-        { name: "Warning", hex: "#FFAF7F" }
-      ]
-    };
+    const swatches = [
+      { name: "Background", token: "--da-bg" },
+      { name: "Surface", token: "--da-surface" },
+      { name: "Text", token: "--da-text-1" },
+      { name: "Muted Text", token: "--da-text-2" },
+      { name: "Border", token: "--da-border" },
+      { name: "Accent", token: "--da-accent" },
+      { name: "Success", token: "--da-success" },
+      { name: "Warning", token: "--da-warning" }
+    ];
 
-    function renderColors(mode) {
+    function readTokenValue(token) {
+      return getComputedStyle(document.documentElement).getPropertyValue(token).trim();
+    }
+
+    function renderColors() {
       const root = document.getElementById("colorGrid");
-      root.innerHTML = themes[mode]
+      root.innerHTML = swatches
         .map((c) => `
           <div class="swatch">
-            <div class="chip" style="background:${c.hex}"></div>
+            <div class="chip" style="background:${readTokenValue(c.token)}"></div>
             <div class="swatch-body">
               <p class="swatch-name">${c.name}</p>
-              <p class="swatch-hex">${c.hex}</p>
+              <p class="swatch-hex">${readTokenValue(c.token)}</p>
             </div>
           </div>
         `)
@@ -105,10 +97,10 @@
     checkbox.addEventListener("change", () => {
       const isDark = checkbox.checked;
       document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
-      renderColors(isDark ? "dark" : "light");
+      renderColors();
     });
 
-    renderColors("light");
+    renderColors();
   </script>
 </body>
 </html>
